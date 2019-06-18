@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by sreehari
  * on 18/6/19.
  */
-class Articles {
+public class Article {
     @SerializedName("source")
     Source source;
 

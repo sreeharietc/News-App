@@ -2,6 +2,8 @@ package com.news.newsapp.data;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by sreehari
  * on 18/6/19.
@@ -14,7 +16,7 @@ public class NewsEntry {
     String totalResults;
 
     @SerializedName("articles")
-    Articles articles;
+    List<Article> articles;
 
     public String getStatus() {
         return status;
@@ -24,7 +26,7 @@ public class NewsEntry {
         return totalResults;
     }
 
-    public Articles getArticles() {
+    public List<Article> getArticles() {
         return articles;
     }
 }
