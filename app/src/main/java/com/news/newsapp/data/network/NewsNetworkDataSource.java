@@ -40,18 +40,13 @@ public class NewsNetworkDataSource {
 
     public LiveData<List<Article>> getNewsArticles() {
         getNewsUpdates();
-        List<Article> articleList = new ArrayList<>();
-        articleList.add(new Article());
-        articles.postValue(articleList);
         return articles;
     }
-
-
 
     private void getNewsUpdates() {
         /*Create handle for the RetrofitInstance interface*/
         NetworkService service = RetrofitClientInstance.getRetrofitInstance().create(NetworkService.class);
-        Call<NewsEntry> call = service.getNews("in", 20, 1);
+        Call<NewsEntry> call = service.getNews( NetworkConstants.PAGE_ONE);
         call.enqueue(new Callback<NewsEntry>() {
             @Override
             public void onResponse(@NonNull Call<NewsEntry> call, @NonNull Response<NewsEntry> response) {

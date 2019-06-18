@@ -1,12 +1,15 @@
 package com.news.newsapp.data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by sreehari
  * on 18/6/19.
  */
-public class Article {
+public class Article implements Parcelable {
     @SerializedName("source")
     Source source;
 
@@ -30,6 +33,28 @@ public class Article {
 
     @SerializedName("content")
     String content;
+
+    protected Article(Parcel in) {
+        author = in.readString();
+        title = in.readString();
+        description = in.readString();
+        url = in.readString();
+        urlToImage = in.readString();
+        publishedAt = in.readString();
+        content = in.readString();
+    }
+
+    public static final Creator<Article> CREATOR = new Creator<Article>() {
+        @Override
+        public Article createFromParcel(Parcel in) {
+            return new Article(in);
+        }
+
+        @Override
+        public Article[] newArray(int size) {
+            return new Article[size];
+        }
+    };
 
     public Source getSource() {
         return source;
@@ -61,5 +86,21 @@ public class Article {
 
     public String getContent() {
         return content;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(author);
+        parcel.writeString(title);
+        parcel.writeString(description);
+        parcel.writeString(url);
+        parcel.writeString(urlToImage);
+        parcel.writeString(publishedAt);
+        parcel.writeString(content);
     }
 }

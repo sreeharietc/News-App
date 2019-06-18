@@ -12,6 +12,6 @@ import retrofit2.http.Query;
  */
 public interface NetworkService {
 
-    @GET("/v2/top-headlines")
-    Call<NewsEntry> getNews(@Query("country") String country, @Query("pageSize") int pageSize, @Query("page") int page);
+    @GET("/v2/top-headlines?country=in&pageSize=20")
+    Call<NewsEntry> getNews(@Query("page") int page);
 }

@@ -2,6 +2,7 @@ package com.news.newsapp.ui.list;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,12 +11,14 @@ import android.support.v7.widget.RecyclerView;
 
 import com.news.newsapp.R;
 import com.news.newsapp.data.Article;
+import com.news.newsapp.ui.detail.NewsDetailActivity;
 import com.news.newsapp.utilities.InjectorUtils;
 
 import java.util.List;
 
 public class NewsListActivity extends AppCompatActivity {
 
+    private static final String NEWS_ARTICLE = "news_article";
     RecyclerView newsListView;
     NewsListViewModel newsListViewModel;
     NewsListAdapter newsListAdapter;
@@ -39,7 +42,8 @@ public class NewsListActivity extends AppCompatActivity {
         NewsListAdapter.NewsAdapterOnItemClickHandler adapterOnItemClickHandler = new NewsListAdapter.NewsAdapterOnItemClickHandler() {
             @Override
             public void onItemClick(Article article) {
-
+                Intent intent = new Intent(NewsListActivity.this, NewsDetailActivity.class);
+                intent.putExtra(NEWS_ARTICLE, article);
             }
         };
 
