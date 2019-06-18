@@ -12,13 +12,13 @@ import com.news.newsapp.ui.list.NewsListViewModelFactory;
  */
 public class InjectorUtils {
     public static NewsListViewModelFactory provideMainActivityViewModelFactory(Context context) {
-        NewsRepository repository = provideRepository();
+        NewsRepository repository = provideRepository(context);
         return new NewsListViewModelFactory(repository);
     }
 
-    private static NewsRepository provideRepository() {
+    private static NewsRepository provideRepository(Context context) {
         NewsNetworkDataSource networkDataSource =
-                NewsNetworkDataSource.getInstance();
+                NewsNetworkDataSource.getInstance(context);
         return NewsRepository.getInstance(networkDataSource);
     }
 }

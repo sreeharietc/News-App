@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 
 import com.news.newsapp.data.network.NewsNetworkDataSource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,12 +20,6 @@ public class NewsRepository {
 
     private NewsRepository(NewsNetworkDataSource newsNetworkDataSource) {
         this.newsNetworkDataSource = newsNetworkDataSource;
-        articlesLiveData.observeForever(new Observer<List<Article>>() {
-            @Override
-            public void onChanged(@Nullable List<Article> updatedArticles) {
-
-            }
-        });
     }
 
     public static NewsRepository getInstance(NewsNetworkDataSource networkDataSource) {
