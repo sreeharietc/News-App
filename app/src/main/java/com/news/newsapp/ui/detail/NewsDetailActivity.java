@@ -1,13 +1,13 @@
 package com.news.newsapp.ui.detail;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.news.newsapp.R;
-import com.news.newsapp.data.Article;
+import com.news.newsapp.data.models.Article;
 import com.squareup.picasso.Picasso;
 
 import java.util.Objects;
@@ -24,11 +24,15 @@ public class NewsDetailActivity extends AppCompatActivity {
         NewsDetailViewModelFactory factory = new NewsDetailViewModelFactory((Article) getIntent().getParcelableExtra(NEWS_ARTICLE));
         NewsDetailViewModel newsDetailViewModel = ViewModelProviders.of(this, factory).get(NewsDetailViewModel.class);
         article = newsDetailViewModel.getArticle();
+        //Set the actionbar title and back button.
         Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getString(R.string.news_detail));
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         setupView();
     }
 
+    /**
+     * Populate the layout with values from {@link article}
+     */
     private void setupView() {
         TextView newsTitle = findViewById(R.id.tv_news_title);
         TextView newsDescription = findViewById(R.id.tv_news_description);

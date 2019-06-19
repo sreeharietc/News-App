@@ -13,18 +13,21 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.news.newsapp.data.network.NetworkConstants.BASE_URL;
 import static okhttp3.logging.HttpLoggingInterceptor.Level.BODY;
 import static okhttp3.logging.HttpLoggingInterceptor.Level.NONE;
 
 /**
  * Created by sreehari
  * on 18/6/19.
+ *
+ * Create singleton instance for retrofit.
  */
-public class RetrofitClientInstance {
+class RetrofitClientInstance {
     private static Retrofit retrofit;
-    private static final String BASE_URL = "https://newsapi.org";
 
-    public static Retrofit getRetrofitInstance() {
+
+    static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
             retrofit = new retrofit2.Retrofit.Builder()
                     .baseUrl(BASE_URL)

@@ -9,13 +9,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.news.newsapp.R;
-import com.news.newsapp.data.Article;
+import com.news.newsapp.data.models.Article;
 
 import java.util.List;
 
 /**
  * Created by sreehari
  * on 18/6/19.
+ *
+ * Adapter class which set the news list inside Recyclerview in {@link NewsListActivity}
  */
 public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsListAdapterViewHolder> {
 
@@ -23,7 +25,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsLi
     private NewsAdapterOnItemClickHandler onItemClickHandler;
     private List<Article> articles;
 
-    public NewsListAdapter(Context context, NewsAdapterOnItemClickHandler onItemClickHandler) {
+    NewsListAdapter(Context context, NewsAdapterOnItemClickHandler onItemClickHandler) {
         this.context = context;
         this.onItemClickHandler = onItemClickHandler;
     }
@@ -40,7 +42,11 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsLi
         newsListAdapterViewHolder.tvNewsTitle.setText(articles.get(position).getTitle());
     }
 
-    public void updateNewsList(List<Article> articles) {
+    /**
+     * Every time news list is updated from repository, the corresponding list is passed to the adapter.
+     * @param articles News list reference
+     */
+    void updateNewsList(List<Article> articles) {
         this.articles = articles;
         notifyDataSetChanged();
     }
@@ -54,6 +60,9 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsLi
         }
     }
 
+    /**
+     * ViewHolder class which defines single news list item.
+     */
     class NewsListAdapterViewHolder extends RecyclerView.ViewHolder {
         TextView tvNewsTitle;
         NewsListAdapterViewHolder(@NonNull View itemView) {
@@ -70,6 +79,9 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsLi
         }
     }
 
+    /**
+     * Interface class which declares click method for every news list item.
+     */
     public interface NewsAdapterOnItemClickHandler {
         void onItemClick(Article article);
     }

@@ -4,22 +4,18 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
-import com.news.newsapp.data.Article;
-import com.news.newsapp.data.NewsRepository;
-import com.news.newsapp.ui.list.NewsListViewModel;
+import com.news.newsapp.data.models.Article;
 
 /**
  * Created by sreehari
  * on 18/6/19.
- */
-/**
  * Factory method that allows us to create a ViewModel with a constructor that takes a
  * {@link Article}
  */
 public class NewsDetailViewModelFactory extends ViewModelProvider.NewInstanceFactory  {
     private final Article article;
 
-    public NewsDetailViewModelFactory(Article article) {
+    NewsDetailViewModelFactory(Article article) {
         this.article = article;
     }
 

@@ -6,10 +6,9 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
-import com.news.newsapp.data.Article;
-import com.news.newsapp.data.NewsEntry;
+import com.news.newsapp.data.models.Article;
+import com.news.newsapp.data.models.NewsEntry;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -19,18 +18,22 @@ import retrofit2.Response;
 /**
  * Created by sreehari
  * on 18/6/19.
+ *
+ * Provides an API for doing all operations with the server data
  */
 public class NewsNetworkDataSource {
-
     private MutableLiveData<List<Article>> articles;
     private static NewsNetworkDataSource sInstance;
     private Context context;
 
-    public NewsNetworkDataSource(Context context) {
-        this.context = context;
+    private NewsNetworkDataSource(Context context) {
+        this.context = context.getApplicationContext();
         this.articles = new MutableLiveData<>();
     }
 
+    /**
+     * Get the singleton for this class
+     */
     public static NewsNetworkDataSource getInstance(Context context) {
         if(sInstance == null) {
             sInstance = new NewsNetworkDataSource(context);
@@ -43,6 +46,9 @@ public class NewsNetworkDataSource {
         return articles;
     }
 
+    /**
+     * Get the newest News
+     */
     private void getNewsUpdates() {
         /*Create handle for the RetrofitInstance interface*/
         NetworkService service = RetrofitClientInstance.getRetrofitInstance().create(NetworkService.class);

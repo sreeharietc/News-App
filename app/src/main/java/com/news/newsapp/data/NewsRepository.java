@@ -1,20 +1,20 @@
 package com.news.newsapp.data;
 
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
 
+import com.news.newsapp.data.models.Article;
 import com.news.newsapp.data.network.NewsNetworkDataSource;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by sreehari
  * on 18/6/19.
+ *
+ * Handles data operations in NewsApp. Acts as a mediator between {@link NewsNetworkDataSource}
+ * and {@link com.news.newsapp.ui.list.NewsListViewModel}
  */
 public class NewsRepository {
-    private LiveData<List<Article>> articlesLiveData;
     private NewsNetworkDataSource newsNetworkDataSource;
     private static NewsRepository sInstance;
 
@@ -22,6 +22,9 @@ public class NewsRepository {
         this.newsNetworkDataSource = newsNetworkDataSource;
     }
 
+    /**
+     * Get the singleton for this class
+     */
     public static NewsRepository getInstance(NewsNetworkDataSource networkDataSource) {
         if(sInstance == null) {
             sInstance = new NewsRepository(networkDataSource);
@@ -29,8 +32,11 @@ public class NewsRepository {
         return sInstance;
     }
 
+    /**
+     *
+     * @return news articles from network class.
+     */
     public LiveData<List<Article>> getNewsArticles() {
-        articlesLiveData = newsNetworkDataSource.getNewsArticles();
-        return articlesLiveData;
+        return newsNetworkDataSource.getNewsArticles();
     }
 }

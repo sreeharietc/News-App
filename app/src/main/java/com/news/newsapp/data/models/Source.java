@@ -1,4 +1,4 @@
-package com.news.newsapp.data;
+package com.news.newsapp.data.models;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -8,9 +8,11 @@ import com.google.gson.annotations.SerializedName;
  */
 class Source {
     @SerializedName("id")
+    private
     String id;
 
     @SerializedName("name")
+    private
     String name;
 
     public String getId() {

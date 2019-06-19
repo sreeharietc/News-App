@@ -1,10 +1,9 @@
 package com.news.newsapp.data.network;
 
-import com.news.newsapp.data.NewsEntry;
+import com.news.newsapp.data.models.NewsEntry;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 
 /**
  * Created by sreehari

@@ -3,9 +3,9 @@ package com.news.newsapp.ui.list;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -15,11 +15,17 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.news.newsapp.R;
-import com.news.newsapp.data.Article;
+import com.news.newsapp.data.models.Article;
 import com.news.newsapp.ui.detail.NewsDetailActivity;
 import com.news.newsapp.utilities.InjectorUtils;
 
 import java.util.List;
+
+/**
+ * Class that takes news list from network and display in recyclerview.
+ * Progress dialog shows network operation.
+ * Refresh button in menu to get news on demand.
+ */
 
 public class NewsListActivity extends AppCompatActivity {
 
@@ -40,12 +46,17 @@ public class NewsListActivity extends AppCompatActivity {
         newsListViewModel.getNews().observe(this, new Observer<List<Article>>() {
             @Override
             public void onChanged(@Nullable List<Article> articles) {
+                //Once LiveData gets updated, progressbar is set to invisible and list view adapter is updated.
                 progressBar.setVisibility(View.GONE);
                 newsListAdapter.updateNewsList(articles);
             }
         });
     }
 
+
+    /**
+     * Set adapter for recyclerview and define click listener for news list item.
+     */
     private void setupNewsListView() {
         NewsListAdapter.NewsAdapterOnItemClickHandler adapterOnItemClickHandler = new NewsListAdapter.NewsAdapterOnItemClickHandler() {
             @Override
@@ -62,6 +73,7 @@ public class NewsListActivity extends AppCompatActivity {
         newsListView.setAdapter(newsListAdapter);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -71,7 +83,7 @@ public class NewsListActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
+        // When refresh button is clicked, news is again fetched from repository and progress bar is set to visible.
         if (item.getItemId() == R.id.menu_item_refresh) {
             newsListViewModel.fetchNewsFromRepository();
             progressBar.setVisibility(View.VISIBLE);

@@ -9,6 +9,8 @@ import com.news.newsapp.ui.list.NewsListViewModelFactory;
 /**
  * Created by sreehari
  * on 18/6/19.
+ *
+ * Provides static methods to inject the various classes needed for NewsApp
  */
 public class InjectorUtils {
     public static NewsListViewModelFactory provideMainActivityViewModelFactory(Context context) {

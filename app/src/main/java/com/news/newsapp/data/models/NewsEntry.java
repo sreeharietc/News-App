@@ -1,4 +1,4 @@
-package com.news.newsapp.data;
+package com.news.newsapp.data.models;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -10,12 +10,15 @@ import java.util.List;
  */
 public class NewsEntry {
     @SerializedName("status")
+    private
     String status;
 
     @SerializedName("totalResults")
+    private
     String totalResults;
 
     @SerializedName("articles")
+    private
     List<Article> articles;
 
     public String getStatus() {
