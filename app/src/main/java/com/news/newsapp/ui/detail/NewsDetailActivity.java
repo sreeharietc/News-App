@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.news.newsapp.R;
 import com.news.newsapp.data.Article;
+import com.squareup.picasso.Picasso;
 
 import static com.news.newsapp.ui.list.NewsListActivity.NEWS_ARTICLE;
 
@@ -32,5 +33,6 @@ public class NewsDetailActivity extends AppCompatActivity {
 
         newsTitle.setText(article.getTitle());
         newsDescription.setText(article.getDescription());
+        Picasso.get().load(article.getUrlToImage()).placeholder(R.drawable.ic_launcher_foreground).into(newsImage);
     }
 }
