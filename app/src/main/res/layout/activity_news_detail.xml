@@ -11,9 +11,9 @@
         tools:context=".ui.detail.NewsDetailActivity">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tv_news_title"
             android:layout_width="267dp"
-            android:layout_height="39dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/news_image"
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_marginStart="8dp"
@@ -34,19 +34,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/tv_news_title"
             tools:srcCompat="@tools:sample/avatars"
             android:contentDescription="@string/image_of_news_item" />
 
         <TextView
             android:id="@+id/tv_news_description"
-            android:layout_width="381dp"
-            android:layout_height="259dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="32dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/news_image" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

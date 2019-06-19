@@ -18,7 +18,7 @@ import java.util.List;
 
 public class NewsListActivity extends AppCompatActivity {
 
-    private static final String NEWS_ARTICLE = "news_article";
+    public static final String NEWS_ARTICLE = "news_article";
     RecyclerView newsListView;
     NewsListViewModel newsListViewModel;
     NewsListAdapter newsListAdapter;
@@ -44,6 +44,7 @@ public class NewsListActivity extends AppCompatActivity {
             public void onItemClick(Article article) {
                 Intent intent = new Intent(NewsListActivity.this, NewsDetailActivity.class);
                 intent.putExtra(NEWS_ARTICLE, article);
+                startActivity(intent);
             }
         };
 
