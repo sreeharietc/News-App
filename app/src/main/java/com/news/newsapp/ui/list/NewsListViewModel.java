@@ -13,15 +13,19 @@ import java.util.List;
  * on 18/6/19.
  */
 public class NewsListViewModel extends ViewModel {
-    private final LiveData<List<Article>> newsArticles;
+    private LiveData<List<Article>> newsArticles;
     private NewsRepository newsRepository;
 
     NewsListViewModel(NewsRepository newsRepository) {
         this.newsRepository = newsRepository;
-        newsArticles = this.newsRepository.getNewsArticles();
+        fetchNewsFromRepository();
     }
 
     public LiveData<List<Article>> getNews() {
         return newsArticles;
+    }
+
+    public void fetchNewsFromRepository() {
+        newsArticles = this.newsRepository.getNewsArticles();
     }
 }

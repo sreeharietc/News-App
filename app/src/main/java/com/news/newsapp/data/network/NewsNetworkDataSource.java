@@ -46,7 +46,7 @@ public class NewsNetworkDataSource {
     private void getNewsUpdates() {
         /*Create handle for the RetrofitInstance interface*/
         NetworkService service = RetrofitClientInstance.getRetrofitInstance().create(NetworkService.class);
-        Call<NewsEntry> call = service.getNews( NetworkConstants.PAGE_ONE);
+        Call<NewsEntry> call = service.getNews();
         call.enqueue(new Callback<NewsEntry>() {
             @Override
             public void onResponse(@NonNull Call<NewsEntry> call, @NonNull Response<NewsEntry> response) {

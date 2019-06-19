@@ -54,9 +54,9 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsLi
         }
     }
 
-    public class NewsListAdapterViewHolder extends RecyclerView.ViewHolder {
+    class NewsListAdapterViewHolder extends RecyclerView.ViewHolder {
         TextView tvNewsTitle;
-        public NewsListAdapterViewHolder(@NonNull View itemView) {
+        NewsListAdapterViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvNewsTitle = itemView.findViewById(R.id.tv_news_title);
