@@ -14,6 +14,10 @@ import java.util.Objects;
 
 import static com.news.newsapp.ui.list.NewsListActivity.NEWS_ARTICLE;
 
+/**
+ * Displays news in detail with description and image.
+ * All needed data is stored in {@link NewsDetailViewModel}
+ */
 public class NewsDetailActivity extends AppCompatActivity {
     private Article article;
 

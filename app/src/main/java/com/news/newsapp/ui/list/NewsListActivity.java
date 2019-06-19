@@ -23,6 +23,7 @@ import java.util.List;
 
 /**
  * Class that takes news list from network and display in recyclerview.
+ * Uses MVVM architecture.
  * Progress dialog shows network operation.
  * Refresh button in menu to get news on demand.
  */
